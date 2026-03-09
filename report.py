@@ -1,0 +1,184 @@
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.colors import HexColor, white
+from reportlab.lib.units import inch
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from io import BytesIO
+
+
+# Register Poppins fonts
+pdfmetrics.registerFont(TTFont("Poppins", "Poppins-Regular.ttf"))
+pdfmetrics.registerFont(TTFont("Poppins-Bold", "Poppins-Bold.ttf"))
+
+
+def generate_report(risk, results, network_size, top_nodes):
+
+    buffer = BytesIO()
+
+    # Colors (security report style)
+    primary = HexColor("#1F2937")
+    accent = HexColor("#2563EB")
+    table_header = HexColor("#111827")
+    table_row = HexColor("#F3F4F6")
+
+    # Custom styles
+    styles = getSampleStyleSheet()
+
+    title_style = ParagraphStyle(
+        "Title",
+        parent=styles["Title"],
+        fontName="Poppins-Bold",
+        fontSize=24,
+        textColor=primary,
+        spaceAfter=20
+    )
+
+    heading_style = ParagraphStyle(
+        "Heading",
+        parent=styles["Heading2"],
+        fontName="Poppins-Bold",
+        fontSize=16,
+        textColor=primary,
+        spaceAfter=10
+    )
+
+    body_style = ParagraphStyle(
+        "Body",
+        parent=styles["BodyText"],
+        fontName="Poppins",
+        fontSize=10,
+        leading=16
+    )
+
+    elements = []
+
+    # ---------------- Header ----------------
+
+    elements.append(
+        Paragraph("LambdaShield Security Assessment", title_style)
+    )
+
+    elements.append(
+        Paragraph(
+            "Automated network resilience and cyber propagation risk report.",
+            body_style
+        )
+    )
+
+    elements.append(Spacer(1, 30))
+
+    # ---------------- Simulation Summary ----------------
+
+    elements.append(
+        Paragraph("Simulation Summary", heading_style)
+    )
+
+    summary_data = [
+        ["Metric", "Value"],
+        ["Network Size", network_size],
+        ["Risk Level", risk["risk_level"]],
+        ["Infection Ratio", f"{risk['infection_ratio']:.3f}"],
+        ["Resilience Score", f"{risk['resilience_score']:.3f}"],
+        ["Average λ(t)", f"{risk['avg_lambda']:.3f}"],
+        ["Propagation Velocity", f"{risk['propagation_velocity']:.3f}"],
+    ]
+
+    table = Table(summary_data, colWidths=[3 * inch, 2 * inch])
+
+    table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), table_header),
+        ("TEXTCOLOR", (0, 0), (-1, 0), white),
+        ("FONTNAME", (0, 0), (-1, 0), "Poppins-Bold"),
+        ("FONTNAME", (0, 1), (-1, -1), "Poppins"),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [table_row, white]),
+        ("GRID", (0, 0), (-1, -1), 0.5, HexColor("#D1D5DB")),
+        ("ALIGN", (1, 1), (-1, -1), "CENTER"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 12),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 12),
+        ("TOPPADDING", (0, 0), (-1, -1), 8),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
+    ]))
+
+    elements.append(table)
+    elements.append(Spacer(1, 30))
+
+    # ---------------- Critical Nodes ----------------
+
+    elements.append(
+        Paragraph("Critical Network Nodes", heading_style)
+    )
+
+    node_data = [["Node ID"]] + [[str(n)] for n in top_nodes]
+
+    node_table = Table(node_data, colWidths=[4 * inch])
+
+    node_table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, 0), table_header),
+        ("TEXTCOLOR", (0, 0), (-1, 0), white),
+        ("FONTNAME", (0, 0), (-1, 0), "Poppins-Bold"),
+        ("FONTNAME", (0, 1), (-1, -1), "Poppins"),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [table_row, white]),
+        ("GRID", (0, 0), (-1, -1), 0.5, HexColor("#D1D5DB")),
+        ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+    ]))
+
+    elements.append(node_table)
+    elements.append(Spacer(1, 30))
+
+    # ---------------- Recommendation ----------------
+
+    elements.append(
+        Paragraph("Security Recommendation", heading_style)
+    )
+
+    elements.append(
+        Paragraph(risk["recommendation"], body_style)
+    )
+
+    elements.append(Spacer(1, 30))
+
+    # ---------------- Outcome Summary ----------------
+
+    elements.append(
+        Paragraph("Outcome Summary", heading_style)
+    )
+
+    final_infected = len(results["final_infected"])
+
+    summary_text = f"""
+    The propagation simulation resulted in <b>{final_infected}</b> infected nodes
+    out of a total network size of <b>{network_size}</b>. The infection ratio
+    reached <b>{risk['infection_ratio']:.3f}</b>, producing a <b>{risk['risk_level']}</b>
+    risk classification based on the simulated propagation dynamics.
+    """
+
+    elements.append(
+        Paragraph(summary_text, body_style)
+    )
+
+    elements.append(Spacer(1, 50))
+
+    # ---------------- Footer ----------------
+
+    elements.append(
+        Paragraph(
+            "Generated by LambdaShield — Network Resilience Simulator",
+            ParagraphStyle(
+                "Footer",
+                parent=styles["Normal"],
+                fontName="Poppins",
+                fontSize=8,
+                textColor=HexColor("#6B7280"),
+                alignment=1
+            )
+        )
+    )
+
+    doc = SimpleDocTemplate(buffer, pagesize=letter)
+    doc.build(elements)
+
+    buffer.seek(0)
+
+    return buffer
