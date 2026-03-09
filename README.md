@@ -1,4 +1,4 @@
-# LambdaShield --- Network Resilience Simulator
+# LambdaShield - Network Resilience Simulator
 
 LambdaShield is an interactive network security analysis tool that
 simulates **stochastic worm propagation** and evaluates **cyber outbreak
