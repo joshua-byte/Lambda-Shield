@@ -1,48 +1,102 @@
-# LambdaShield - Network Resilience Simulator
+# 🚀 LambdaShield: Network Attack Propagation Simulator
 
-LambdaShield is an interactive network security analysis tool that simulates **stochastic worm propagation** and evaluates **cyber outbreak risk** across network architectures. The system models malware propagation using probabilistic infection dynamics and graph-based network structures to help analysts understand
-How different architectures influence attack spread. The tool provides **visual analytics, resilience metrics, and automated risk reports**.
+LambdaShield is an interactive network security analysis tool that simulates how malware (worms, botnets) spreads across different network architectures and evaluates the resulting security risk.
 
-## Overview
+> **Key Idea:** If an attacker gains initial access, how far and how fast can they spread?
 
-Modern network infrastructures are vulnerable to rapid propagation
-attacks such as worms, botnets, and distributed malware. The ability to
-model propagation dynamics before deployment can significantly improve
-defensive architecture design.
+---
 
-LambdaShield simulates attack propagation across different networks
-topologies and provides metrics such as:
+## 🧠 Overview
 
--   Infection growth
--   Outbreak velocity
--   Network resilience score
--   Risk classification
--   Critical node detection
+Modern enterprise networks are highly interconnected, making them vulnerable to rapid propagation attacks such as worms and lateral movement techniques.
 
-------------------------------------------------------------------------
+LambdaShield helps security engineers and researchers:
 
-## Features
+* Understand how attacks propagate across networks
+* Identify weak architectural designs
+* Evaluate resilience before real-world deployment
 
--   Stochastic worm propagation simulation
--   Multiple network architecture models:
-    -   Scale-free networks
-    -   Random networks
-    -   Segmented networks
--   Interactive visualization of infection spread
--   Network analytics and centrality analysis
--   Architecture comparison tools
--   PDF security report generation
--   Simulation data export (CSV)
+---
 
-## Security Insight and Real World Application 
-Demonstrates how scale-free networks are more vulnerable to rapid worm propagation due to hub concentration. This tool can be useful for designing segmented enterprise networks to reduce lateral movement. 
+## ⚙️ Core Features
 
-## Example Applications
+* 🧬 **Stochastic Worm Propagation Simulation**
+  Models probabilistic infection spread across nodes
 
-LambdaShield can be used for:
+* 🌐 **Multiple Network Topologies**
 
--   Cybersecurity architecture planning
--   Network resilience analysis
--   Malware propagation research
--   Security training simulations
--   Academic research in network science
+  * Scale-Free Networks (enterprise-like)
+  * Random Networks
+  * Segmented Networks
+
+* 📊 **Propagation Analytics**
+
+  * Infection growth over time
+  * Outbreak velocity
+  * Spread patterns
+
+* 🎯 **Security Insights**
+
+  * Critical node detection
+  * Network resilience scoring
+  * Risk classification
+
+* 📈 **Visualization**
+
+  * Interactive graph-based infection spread
+  * Real-time simulation tracking
+
+* 📄 **Reporting**
+
+  * Automated PDF risk reports
+  * CSV export of simulation data
+
+---
+
+## 🛡️ Why LambdaShield Matters
+
+Most security tools focus on **detecting attacks**.
+
+LambdaShield focuses on:
+
+> **Understanding the impact of a successful attack.**
+
+It helps answer:
+
+* How vulnerable is my network architecture?
+* Which nodes are most critical?
+* Does segmentation actually reduce risk?
+* How quickly can an attack escalate?
+
+---
+
+## 🔍 Key Insights Demonstrated
+
+* Scale-free networks are highly vulnerable due to hub nodes
+* Flat architectures enable rapid lateral movement
+* Segmented networks significantly reduce outbreak spread
+* Critical nodes disproportionately influence attack success
+
+---
+
+## 🧪 Example Use Cases
+
+* 🏢 Enterprise network architecture planning
+* 🔴🔵 Red team / blue team simulations
+* 🦠 Malware propagation research
+* 🎓 Security education and training
+
+---
+
+## 🏗️ How It Works (Conceptual Flow)
+
+```text
+1. Generate Network Topology
+2. Select Infection Parameters
+3. Simulate Propagation
+4. Track Infection Spread
+5. Analyze Metrics
+6. Generate Risk Report
+```
+
+
