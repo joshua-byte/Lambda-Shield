@@ -1,4 +1,4 @@
-# 🚀 LambdaShield: Network Attack Propagation Simulator
+# LambdaShield: Network Attack Propagation Simulator
 
 LambdaShield is an interactive network security analysis tool that simulates how malware (worms, botnets) spreads across different network architectures and evaluates the resulting security risk.
 
@@ -6,7 +6,7 @@ LambdaShield is an interactive network security analysis tool that simulates how
 
 ---
 
-## 🧠 Overview
+## Overview
 
 Modern enterprise networks are highly interconnected, making them vulnerable to rapid propagation attacks such as worms and lateral movement techniques.
 
@@ -18,42 +18,42 @@ LambdaShield helps security engineers and researchers:
 
 ---
 
-## ⚙️ Core Features
+## Core Features
 
-* 🧬 **Stochastic Worm Propagation Simulation**
+ **Stochastic Worm Propagation Simulation**
   Models probabilistic infection spread across nodes
 
-* 🌐 **Multiple Network Topologies**
+ **Multiple Network Topologies**
 
   * Scale-Free Networks (enterprise-like)
   * Random Networks
   * Segmented Networks
 
-* 📊 **Propagation Analytics**
+   **Propagation Analytics**
 
   * Infection growth over time
   * Outbreak velocity
   * Spread patterns
 
-* 🎯 **Security Insights**
+   **Security Insights**
 
   * Critical node detection
   * Network resilience scoring
   * Risk classification
 
-* 📈 **Visualization**
+   **Visualization**
 
   * Interactive graph-based infection spread
   * Real-time simulation tracking
 
-* 📄 **Reporting**
+   **Reporting**
 
   * Automated PDF risk reports
   * CSV export of simulation data
 
 ---
 
-## 🛡️ Why LambdaShield Matters
+## Why LambdaShield Matters
 
 Most security tools focus on **detecting attacks**.
 
@@ -70,7 +70,7 @@ It helps answer:
 
 ---
 
-## 🔍 Key Insights Demonstrated
+## Key Insights Demonstrated
 
 * Scale-free networks are highly vulnerable due to hub nodes
 * Flat architectures enable rapid lateral movement
@@ -79,16 +79,16 @@ It helps answer:
 
 ---
 
-## 🧪 Example Use Cases
+## Example Use Cases
 
-* 🏢 Enterprise network architecture planning
-* 🔴🔵 Red team / blue team simulations
-* 🦠 Malware propagation research
-* 🎓 Security education and training
+*  Enterprise network architecture planning
+*  Red team / blue team simulations
+*  Malware propagation research
+*  Security education and training
 
 ---
 
-## 🏗️ How It Works (Conceptual Flow)
+##  How It Works (Conceptual Flow)
 
 ```text
 1. Generate Network Topology
