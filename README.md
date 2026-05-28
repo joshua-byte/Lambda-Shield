@@ -322,6 +322,22 @@ LambdaShield can support:
 
 ---
 
+# Research Foundation
+
+LambdaShield is based on ongoing research into adversarial propagation dynamics, network resilience, and stochastic compromise modeling.
+
+📄 IEEE Xplore Publication:  
+[Uncertainty-Driven Probabilistic Framework for Modeling Worm Propagation in Large-Scale Network Topologies](https://ieeexplore.ieee.org/document/11507173)
+
+The implementation extends concepts related to:
+- propagation behavior across graph topologies,
+- critical-node influence,
+- resilience scoring,
+- and adversarial spread dynamics in distributed systems.
+
+---
+
+---
 # Disclaimer
 
 This project is intended solely for:
